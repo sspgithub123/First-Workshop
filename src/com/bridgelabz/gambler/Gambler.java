@@ -33,6 +33,13 @@ public class Gambler {
         int loseLimit3 = scanner.nextInt();
         gambler.monthlyCalculate(winLimit3, loseLimit3);
         System.out.println("Use Case 5 Finished");
+
+        System.out.println("Set Limit till you want to win for 6th Use Case");
+        int winLimit4 = scanner.nextInt();
+        System.out.println("Set Limit till you can afford Lose 6th Use Case");
+        int loseLimit4 = scanner.nextInt();
+        gambler.checkLuckyOrUnluckyDay(winLimit4, loseLimit4);
+        System.out.println("Game Finished");
     }
 
     // Usecase 2 ( Checking If player Win Or Lose )
@@ -113,5 +120,38 @@ public class Gambler {
         System.out.println("In Month Total Loses" + countLose);
         System.out.println(" Won By :- " + wonByHowMuch);
         System.out.println(" Lose By :- " + loseByHowMuch);
+    }
+
+    // UseCase 6 ( Checking Luckiest Day and Unluckiest Day )
+
+    public void checkLuckyOrUnluckyDay(int winLimit, int loseLimit) {
+        int checkWin = winLimit;
+        int checkLose = loseLimit;
+        int days = 30;
+        int countWin = 0;
+        int countLose = 0;
+        int day = 0;
+        int luckiestDay = 0;
+        int unLuckiestDay = 0;
+
+        for (int index = 0; index < days; index++, day++) {
+
+            int resultOfDay = gamePlay(winLimit, loseLimit);
+            if (resultOfDay == checkWin) {
+                countWin++;
+                luckiestDay = day;
+                System.out.println("Luckyiest Day " + luckiestDay + "");
+
+            } else if (resultOfDay == checkLose) {
+                countLose++;
+                unLuckiestDay = day;
+                System.out.println(" Unluckyiest Day " + unLuckiestDay);
+            }
+        }
+        System.out.println();
+        System.out.println();
+        System.out.println("Monthly How Many Luckiest Days And Unluckiest Days");
+        System.out.println("In Month Luckiest Days" + countWin);
+        System.out.println("In Month Unluckiest Days" + countLose);
     }
 }
