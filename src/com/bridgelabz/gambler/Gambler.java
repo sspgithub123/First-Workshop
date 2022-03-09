@@ -18,6 +18,13 @@ public class Gambler {
 
         System.out.println();
         System.out.println("Use Case 3 Finished");
+
+        System.out.println("Set Limit till you want to win for 4th Use Case ");
+        int winLimit2 = scanner.nextInt();
+        System.out.println("Set Limit till you can afford Lose for 4th Use Case ");
+        int loseLimit2 = scanner.nextInt();
+        gambler.totalAmountCalFor20Days(winLimit2, loseLimit2);
+        System.out.println("Use Case 4 Finished");
     }
 
     // Usecase 2 ( Checking If player Win Or Lose )
@@ -48,5 +55,27 @@ public class Gambler {
             }
         }
         return stake;
+    }
+
+    //UseCase 4 ( Calculating 20 Days Result by checking Player Win Or Lose )
+
+    public void totalAmountCalFor20Days(int winLimit, int loseLimit) {
+        int checkWin = winLimit;
+        int checkLose = loseLimit;
+        int days = 20;
+        int countWin = 0;
+        int countLose = 0;
+        for (int index = 0; index < days; index++) {
+
+            int resultOfDay = gamePlay(winLimit, loseLimit);
+            if (resultOfDay == checkWin) {
+                countWin++;
+            } else if (resultOfDay == checkLose) {
+                countLose++;
+            }
+        }
+        System.out.println("Total 20 Days Result");
+        System.out.println("In 20 Days Total Wins" + countWin);
+        System.out.println("In 20 Days Total Loses" + countLose);
     }
 }
